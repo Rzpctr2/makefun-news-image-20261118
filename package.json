@@ -1,0 +1,11 @@
+{
+  "name": "makefun-news-image",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "node generate.mjs news.json entry.png entry.svg"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.0.0"
+  }
+}
