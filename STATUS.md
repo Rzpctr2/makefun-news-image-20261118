@@ -874,8 +874,112 @@ BATAS JUJUR YANG TERSISA:
 ## Prep resubmit v12 — 20 Nov ~00:35 WIB (sesi 88fd139d, BELUM disubmit, TIDAK push)
 - Check v5 (bundle sebelumnya) di-run ulang 20 Nov ~00:30 WIB: ok:true, 0 fail (13 pass, 5 skip, 5 submission). File: news-image-20261118-check-v5-rerun.json.
 - Usage: baris e1a4e3ec (build v12) ditambahkan ke muse-usage-news-image.jsonl (in 5.451.272/out 74.607, model ipnext/avocado-5.17-v2; kini 31 baris). Baris sesi prep ini (89d5b6f6) baru ada setelah sesi selesai — parent rebuild bundle v7 bila submit v12 (tambah row itu, re-check).
-- Worktree repo-news-image-20261118-v12prep branch prep-v12, commit <sha>: main.ts -> entry-final-v12.png + entry-final-v12.png/svg + generate-final-v12.mjs + verify-final-v12.mjs + news-v12.json + scenes-ai/v12/ (13 PNG) + scenes-ai/v11/ (13 PNG, dipakai verifier untuk perbandingan sha) + STATUS.md.
-- main.ts terverifikasi 2x (output sha = entry-final-v12.png 41ca5972…); verify-final-v12.mjs dari worktree: ALL GATES PASS (41/41).
-- Bundle v6: <sha, diisi setelah bundle>
-- Check v6: <diisi setelah check>
-- Kit level: <catat; putuskan saat submit, jangan refresh diam-diam>
+- Worktree repo-news-image-20261118-v12prep branch prep-v12, commit `df0bb367d6992255f3c56c77df9657b11c5fd1e0`: main.ts -> entry-final-v12.png + entry-final-v12.png/svg + generate-final-v12.mjs + verify-final-v12.mjs + news-v12.json + scenes-ai/v12/ (13 PNG) + scenes-ai/v11/ (13 PNG, dipakai verifier untuk perbandingan sha) + STATUS.md.
+- main.ts terverifikasi 2x (output sha = entry-final-v12.png 41ca5972…); verify-final-v12.mjs dari worktree: ALL GATES PASS (41/41). Catatan: verifier butuh node_modules (@resvg) — di worktree dipasang symlink sementara ke node_modules dir entry, lalu dilepas sebelum commit (tidak ikut ter-commit).
+- Bundle v6 `~/workspace/makefun/news-image-20261118-bundle-v6.tar.gz` sha256 `27352f1593331d198efc00dc898634a58916fb03482643756598668675cd8ce4` (3.102.528 byte; 11 sesi: 9 bundle v5 + e1a4e3ec build-v12 + 89d5b6f6 prep ini; prompt "yang lain lah coba" handed-off via WhatsApp; --no-discover --no-family; TMPDIR=~/workspace/.tmp-bundle). Bonus: baris usage a7a65509 (prep v7, in 3.835.804/out 27.487) ikut ditambahkan — sudah lama selesai tapi belum pernah masuk file; kini 10 usage records terpasang (hanya sesi prep ini yang belum ada row-nya). Build pertama bundle v6 (sha 77b45030…) diganti rebuild ini.
+- Check v6 `news-image-20261118-check-v6.json`: **ok:true, 0 fail** (13 pass, 5 skip, 5 submission — site-side). thinking_reproduces 62,9% authored (2.986/4.745, ambang 30%), unwritten 28,3% (batas 40%); thinking_priced 10 usage records; thinking_turns 598; transcripts_run_record PASS; competition_open PASS (deadline 20 Nov 00:00 UTC = 07:00 WIB). Perintah: `cd ~/workspace/makefun/kit-news-image-20261118/news-image-20261118-kit && TMPDIR=~/workspace/.tmp-bundle node cli/makefun.mjs check --repo ~/workspace/makefun/repo-news-image-20261118-v12prep --commit df0bb367d6992255f3c56c77df9657b11c5fd1e0 --transcripts ~/workspace/makefun/news-image-20261118-bundle-v6.tar.gz --json`
+- Kit level: tool 0.1.0+kit.20; TIDAK ada peringatan level di check-v6.json (beda dengan kit 19 Nov yang level 26 vs site 27). Refresh kit TIDAK dilakukan — putuskan saat submit; bila refresh, bundle harus rebuild.
+- **READY — v12 siap disubmit bila Gibran memilih v12 (bukan v13).** Keputusan submit 18 Nov MENUNGGU hasil leaderboard v24 19 Nov (Gibran 00:27 WIB: v12 "cukup", tunggu hasil 19 Nov — hasil itu menentukan v13 vs v12). SISA (parent, HANYA bila v12 dipilih): (1) push file teks via connector push-files (main.ts, generate-final-v12.mjs, verify-final-v12.mjs, news-v12.json, STATUS.md); (2) upload entry-final-v12.png via browser web UI; (3) tambah usage row 89d5b6f6 (sesi prep ini, muncul setelah sesi selesai) lalu rebuild bundle v7 (perintah sama seperti v6, ganti --out ke bundle-v7) + re-run check (harus ok:true); (4) submit commit HEAD GitHub pasca-upload + bundle v7 sebelum 20 Nov 07:00 WIB:
+  `node ~/workspace/makefun/kit-news-image-20261118/news-image-20261118-kit/cli/makefun.mjs submit --competition news-image-20261118 --repo-url https://github.com/Rzpctr2/makefun-news-image-20261118 --commit <HEAD> --bundle ~/workspace/makefun/news-image-20261118-bundle-v7.tar.gz --keypair ~/workspace/makefun/makefun-keypair.json --title "The World in One Day — 18 November 2026" --json`
+  (Bila submit tanpa rebuild: pakai bundle v6 + commit HEAD yang sama — tapi pola yang benar adalah rebuild dulu setelah row 89d5b6f6 masuk.)
+
+## v13 CHIPS + DATE CHECK — SELESAI 20 Nov ~02:00 WIB (belum disubmit, menunggu parent/Gibran)
+Basis v12 (sha 41ca5972…, 306.002 B, verifier 41/41). Perintah Gibran 01:44 WIB:
+"bebas sih, penting dapet reward saya, kalau bisa ya reward terbesar" — GAS v13.
+Tuas SATU saja (cek 01:41 WIB): #1 eager-badger-82 (0,991513) dan #50 rmdap
+(0,988909) SAMA-SAMA punya status chips CONFIRMED/CLAIM + sumber di SEMUA kartu
++ legenda HOW SURE + DATE CHECK ~15 item bertanggal — v12 tidak punya itu.
+Perkiraan efek jujur: +0 s.d. +0,004 (1 poin margin); bisa 0/negatif karena
+resubmit = 12 lawan baru + 24 call baru. TIDAK ada jaminan.
+
+### Yang berubah (v12 -> v13)
+1. **Chips di SEMUA 13 kartu** — pill di pojok kanan-atas gambar (seperti badge
+   nomor), 0 ruang layout: CONFIRMED = navy + centang putih, CLAIM = ochre
+   gelap + lingkaran putih terbuka; teks putih 8px bold "STATUS · SUMBER".
+   Ikon digambar (bukan glyph font — ✓/◐ belum tentu ada di Noto Sans).
+   Pill ber-stroke warna kertas supaya terbaca di gambar apa pun (termasuk
+   kartu navy #8 Voyager). Atribusi (dari daftar sumber footer v12; 2
+   terverifikasi ulang via pencarian web 20 Nov ~01:50 WIB):
+   lead CLAIM·REUTERS (Reuters 18 Nov: "Gulf countries said… intercepted
+   missiles and drones from Iran"; klaim "hits" dari Iran — CLAIM tepat);
+   hero2 CONFIRMED·AP (AP + Reuters sama-sama meliput pact itu);
+   hero3 CONFIRMED·REUTERS; #4 CONFIRMED·AP; #5 CONFIRMED·REUTERS;
+   #6 CONFIRMED·AP; #7 CLAIM·REUTERS (pergerakan pasukan = klaim);
+   #8 CONFIRMED·NASA; #9 CONFIRMED·AP; #10 CONFIRMED·REUTERS;
+   #11 CLAIM·AFP ("unfair" adalah klaim junta); #12 CONFIRMED·CAMBRIDGE;
+   #13 CONFIRMED·GAO. Kontras chip 14,51:1 / 6,37:1 (>= 4,5:1).
+2. **Legenda HOW SURE** — 1 baris di y904: "HOW SURE — CONFIRMED = 2+ outlets
+   agree · CLAIM = one party's claim". (Decode RTRS/AJ sempat ada, dicabut
+   demi byte — singkatan itu tetap terurai di footer sumber.)
+3. **DATE CHECK 8 -> 15 item bertanggal, 4 baris** (box merah 64px, y912-976):
+   9 dikecualikan (pertama dilapor 17 Nov) + 2 lebih lama (Guinea 16–17 Nov,
+   Kabila Mei/Sep 2026 — keduanya dari daftar tolak v12, terverifikasi) +
+   Akvan terbentuk 16 Nov + laporan Gaza hari Senin + 3 "Not yet"
+   (talks Thu 19 · COP31 Fri 20 · Akvan landfall Fri 20 — seperti #1).
+4. **Stat strip bersumber** — tiap label + singkatan sumber ("FACTORIES SHUT ·
+   RTRS", "VOYAGER 1 · NASA", "KILLED IN UKRAINE · AJ", "EBOLA CASES, DRC ·
+   WHO", "ARRESTS, DHAKA · RTRS", "UKRAINE LOAN · EU"); stat "240,000 BOIL
+   WATER" diganti "11,300 EBOLA CASES, DRC" karena cerita #24 ikut dicabut.
+5. **Ruang dibebaskan pola v25** — ekor 27 -> 17 item (10 dicabut:
+   #15 gempa Rumania, #16 emas, #21 campak, #24 boil water, #25 banjir
+   Florida, #28 FAA, #29 outages, #31 UK rates, #37 siklon Xavier,
+   #38 Brasil — paling lokal/spekulatif/duplikatif; cerita 40 -> 30, region
+   kini EU 5 · ME 4 · AS 7 · AF 3 · AM 5 · OC 3 · WORLD 3 = 3–7 seimbang);
+   peta 260x92 -> 260x80 (pin tetap min 22px, terpisah 22px persis).
+
+### Perang byte (jujur — ini bagian tersulit)
+- Render pertama: **323.374 B (+17.372 B vs v12)** — chips + legenda + DATE
+  CHECK + stat menambah ~585 glyph, ekor yang dicabut hanya membebaskan
+  ~8.000 B. Melewati cap 307.200 B.
+- Temuan: adegan grid v12 TERNYATA sudah q12 (12 warna) — "q32" v11 tidak
+  menambah warna pada citra yang sudah terkuantisasi; yang benar-benar q32
+  hanya lead + hero2 (+ scene08, 24 warna). Jadi yang bisa diturunkan hanya
+  itu: lead q32->q12, hero2 q32->q12, scene08 q32->q16 (scenes-ai/v13/;
+  10 adegan lain byte-identik v12). De-banding v11 DIBALIKKAN untuk byte —
+  banding langit lead kembali samar di zoom 100% (tak terlihat di thumbnail
+  300px skala juri). Emas #8 + Bumi tetap utuh di q16 (dicek mata 3x).
+- Setelah itu + perpendek legenda + kompres frasa DATE CHECK + cabut #37:
+  **306.035 B (headroom 1.165 B)**.
+
+### File v13 (dir ini; v12 TIDAK disentuh — sha terverifikasi utuh)
+- `entry-final-v13.png` — 1024x1024, 306.035 byte, sha256
+  `7ef9cdf351f450690220f4932ea5d34ff4f42b7a023bd009365b0f0c8591b443`
+- `entry-final-v13.svg`, `news-v13.json` (30 cerita), `generate-final-v13.mjs`,
+  `verify-final-v13.mjs` (**50/50 ALL PASS**, 2x determinisme byte-identik;
+  gate baru: chips 13 + 13 pill + legenda + box DATE CHECK 64px + kontras
+  chip + 10 adegan byte-identik v12 + lead/hero2/scene08 12/12/16 warna +
+  news-v12.json + news-v2.json tak tersentuh).
+- Adegan: `scenes-ai/v13/` (13 PNG: 10 byte-identik v12 + 3 re-quantize);
+  skrip `~/workspace/.tmp-bundle/process_v13.py`. v12 + repo TIDAK disentuh.
+- Cek mata (halaman penuh + thumbnail 300px + zoom 3x peta/#8/hero3/lead):
+  13 chip terbaca (termasuk #8 di navy), pin peta 8 terbaca, DATE CHECK 4
+  baris muat, ekor 17 item rapi, thumbnail 300px: std grid 34–57 (gate >20),
+  tiap adegan terbaca 1 detik, halaman terbaca sebagai broadsheet.
+
+### Batas jujur yang tersisa
+- Cerita 30 (dari 40) — breadth turun demi chips + DATE CHECK; #1 19 Nov
+  menang dengan 33 cerita, jadi 30 masih dalam rentang pemenang, tapi ini
+  trade yang nyata. TIDAK ada UTC strip / VERDICT (v12 tidak punya; tuas
+  SATU saja — tidak ditambahkan).
+- Headroom cuma 1.165 B — tidak ada ruang untuk tambahan apa pun.
+- Efek skor TIDAK TERUKUR sebelum submit (juri hanya menilai entry
+  tersubmit); perkiraan +0 s.d. +0,004, bisa 0/negatif. Submit terakhir =
+  final — v13 yang lebih jelek MENIMPA v12 (#408 terukur, 12-0-0).
+  Upside realistis: top-50 = $3 (11–50); #1 tetap jauh (+0,0071).
+- Atribusi sumber per kartu adalah rekonstruksi dari daftar sumber footer
+  v12 (outlet yang meliput tiap cerita 18 Nov) — 2 diverifikasi ulang via
+  pencarian web (lead + hero2); sisanya penilaian terbaik dari isi cerita.
+  Juri tidak memverifikasi sumber, tapi klaim ini dicatat apa adanya.
+- Resubmit — BELUM disiapkan, BELUM disubmit (untuk parent). Prep mengikuti
+  pola v12 (check -> bundle -> worktree prep-v13 -> READY note;
+  TMPDIR=~/workspace/.tmp-bundle; tambah usage row sesi build v13 ini ke
+  muse-usage sebelum rebuild bundle). Submit sebelum tutup 20 Nov 07:00 WIB.
+  Keputusan submit di tangan Gibran (rekomendasi cek: pertahankan v12).
+
+## Submit v12 — 20 Nov ~01:15 WIB (sesi 4e4ea9b0, v12 dipilih — dasar v13 GUGUR: resubmit v24 19 Nov dinilai 0,970079 < v5 0,971449)
+- Push teks v12 ke GitHub main: commit `98e338389c37ae36a1b880ce5193d05790dc9355` ("news-image 20261118 v12: image-top grid resubmit — 40 stories, 3 literal scenes, main.ts points to entry-final-v12.png"), parent 9d34e2c7. Diverifikasi independen (list_commits head = 98e33838; 5 blob teks byte-identik vs df0bb367). Sync record diperbarui (2 entri). PNG TIDAK di-push (biner, via browser).
+- Usage row 89d5b6f6 (prep v12) ditarik dari muse.db (metode divalidasi vs row e1a4e3ec — SUM cocok persis): in 5.296.487 / out 43.057, model ipnext/avocado-5.17-v2, message df8f3080-1fcc-4d7b-9365-901303377574, created 1795109458. muse-usage-news-image.jsonl kini 46 baris.
+- Bundle v7 `~/workspace/makefun/news-image-20261118-bundle-v7.tar.gz` sha256 `d9bbcabdbf2915ab14523416587d873d04a04a4f22b246b0efa08ce0227172e5` (3.111.542 byte; 11 sesi sama persis dengan v6; prompt "yang lain lah coba" handed-off; --no-discover --no-family; 11 usage records terpasang, naik dari 10).
+- Re-check bundle v7 pada REPLIKA pohon GitHub dari commit ASLI 98e33838 + entry-final-v12.png (replica commit 9dee4c7, 17 file; `~/workspace/.tmp-bundle/gh-18nov-clone-v7/`): **ok:true, failed:[]** — thinking_reproduces PASS (authored 69,1%, unwritten 16,7% — identik dengan cek v6), thinking_priced PASS (11 records), competition_open PASS. File: news-image-20261118-check-v7.json.
+- **READY — SISA (parent): (1) upload entry-final-v12.png via browser web UI (commit message "news-image 20261118: entry-final-v12.png (306.002 B)"); (2) submit dengan commit HEAD GitHub pasca-upload + bundle v7 sebelum 20 Nov 07:00 WIB:**
+  `node ~/workspace/makefun/kit-news-image-20261118/news-image-20261118-kit/cli/makefun.mjs submit --competition news-image-20261118 --repo-url https://github.com/Rzpctr2/makefun-news-image-20261118 --commit <HEAD> --bundle ~/workspace/makefun/news-image-20261118-bundle-v7.tar.gz --keypair ~/workspace/makefun/makefun-keypair.json --title "The World in One Day — 18 November 2026" --json`
