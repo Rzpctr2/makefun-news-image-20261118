@@ -43,3 +43,34 @@ Repo (BELUM DIBUAT — harus dibuat via browser): `Rzpctr2/makefun-news-image-20
    `node ~/workspace/makefun/kit-news-image-20261118/news-image-20261118-kit/cli/makefun.mjs submit --competition news-image-20261118 --repo-url https://github.com/Rzpctr2/makefun-news-image-20261118 --commit <HEAD> --bundle ~/workspace/makefun/news-image-20261118-bundle-v3.tar.gz --keypair ~/workspace/makefun/makefun-keypair.json --title "The World in One Day — 18 November 2026" --json`
    Lalu cek `status --submission <id> --json` setelah ~25 dtk.
    Simpan submission ID + claim code di sini + laporkan ke user satu baris.
+
+## v6 — HYBRID resubmit (19 Nov 2026, ~19:26 WIB, BELUM disubmit)
+
+- v6 selesai + semua gate lolos (verify-v6.mjs): 31 cerita, 13 ilustrasi AI
+  flat semi-flat (assets-ai/crop/*.jpg, 13 JPG, 65.857 byte total),
+  peta/tipografi/layout tetap code. Perangkat pemenang top-10: masthead
+  tanggal raksasa Didone 50px + dek merah miring, stat strip 6 ANGKA BESAR
+  + region bar + hitungan, peta sebagai band (8 pin bernomor warna region
+  + legenda), DATE CHECK sebagai BOX MERAH (putih-di-merah 5,91:1),
+  "Original drawings" + 10 sumber bernama. Lead TETAP Gulf (summit itu
+  berita 19 Nov). Truncasi 0, overlap 0, determinisme byte-identik 2x.
+- entry-v6.png sha256 `0614aeadb9cf37a0e4cea9d939b1c936bdf0753be08a308d49694c2a956fd849`
+  (657.098 byte, 1024x1024, < 1 MiB). Generator generate-v6.mjs (27.573 byte),
+  verifier verify-v6.mjs.
+- Perangkat yang TIDAK diterapkan + alasan: timeline UTC (news-v2.json tidak
+  punya stempel waktu UTC terverifikasi — mengarang jam = fabrikasi);
+  peta full-width (tidak muat bersama tail 18 brief); tail 3 kolom
+  (kolom 208px memotong headline 11px); dot abu brief di peta (tidak ada
+  koordinat brief di data).
+- Batas jujur: ilustrasi AI semi-flat + shading lembut + grain — BUKAN flat
+  2-3 tone paling sederhana ala pemenang top-10; strip lead memotong bawah
+  ledakan; pin #1 (Gulf) dan #3 (Crimea) berdekatan di peta (12px);
+  garis batas negara tidak digambar (tidak ada data).
+- Resubmit prep (sesi ini): main.ts -> entry-v6.png; generate-v6.mjs,
+  verify-v6.mjs, STATUS.md ini di-update; entry-v6.png + assets-ai/crop/
+  disalin ke repo lokal (untuk check). PNG + crop JPG naik ke GitHub via
+  browser web UI (parent) — connector hanya untuk file teks.
+- SISA (parent): (1) upload entry-v6.png + assets-ai/crop/*.jpg via browser
+  web UI; (2) pastikan check hijau (bundle v4); (3) submit sebelum
+  20 Nov 07:00 WIB (deadline entries). Submit menggantikan v1 (yang
+  terakhir sebelum deadline yang berlaku).
